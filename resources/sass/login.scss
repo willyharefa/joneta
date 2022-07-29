@@ -1,0 +1,30 @@
+.section-login {
+    .wrapper-form {
+        max-width: 640px;
+        margin: 40px auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+        .row {
+            box-shadow: 0px 0px 9px rgba(0,0,0, .14);
+            border-radius: 9px;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            width: 100%;
+            .col {
+                display: grid;
+                place-content: center;
+                height: 100%;
+            }
+            .col-form {
+                padding: 20px;
+            }
+        }
+    }
+}
+.section-registration {
+    margin-top: 50px;
+    margin-bottom: 230px;
+
+}
