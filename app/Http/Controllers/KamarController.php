@@ -17,8 +17,8 @@ class KamarController extends Controller
     public function index()
     {
         $title = "Data Kamar";
-        $kosans = Kosan::all();
-        $kamars = Kamar::all();
+        $kosans = Kosan::where('owner_id', Auth::user()->id)->get();
+        $kamars = Kamar::where('owner_id', Auth::user()->id)->get();
         return view('pages.owner.kamar', compact('title', 'kosans', 'kamars'));
     }
 

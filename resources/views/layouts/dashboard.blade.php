@@ -6,9 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard Saya</title>
+        <title>{{ $title }}</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.6/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
         <link href='https://cdn.jsdelivr.net/npm/froala-editor@2.9.6/css/froala_style.min.css' rel='stylesheet' type='text/css' />
@@ -23,25 +26,19 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar-->
-            {{-- <ul class="navbar-nav ms-auto me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" id="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Pengaturan</a></li>
-                        <li><a class="dropdown-item" href="#!">Aktifitas</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{{ route('login.logout') }}">Keluar</a></li>
-                    </ul>
-                </li>
-            </ul> --}}
             <ul class="navbar-nav ms-auto ms-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @auth('owner')
+                        <li><a class="dropdown-item" href="{{ route('owner.show', Auth::user()->id) }}">Pengaturan</a></li>
+                        @endauth
+                        @auth('web')
                         <li><a class="dropdown-item" href="#!">Pengaturan</a></li>
-                        <li><a class="dropdown-item" href="#!">Aktifitas</a></li>
+                        @endauth
+                        <li><a class="dropdown-item" href="{{ route('maintenance') }}">Aktifitas</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="{{ route('login.logout') }}">Keluar</a></li>
+                        <li><a class="dropdown-item btn" id="logout">Keluar</a></li>
                     </ul>
                 </li>
             </ul>
@@ -53,7 +50,7 @@
                         <div class="nav">
                             @auth('owner')
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('owner.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard Utama
                             </a>
@@ -78,8 +75,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Pemesanan</a>
-                                    <a class="nav-link" href="#">Pembayaran</a>
+                                    <a class="nav-link" href="{{ route('report_room') }}">Kamar</a>
+                                    <a class="nav-link" href="{{ route('report_payment') }}">Pembayaran</a>
                                 </nav>
                             </div>
                             @endauth
@@ -108,10 +105,18 @@
         </div>
         
         <script src="{{ asset('/js/scripts.js') }}"></script>
+        <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
         <script src="{{ asset('/js/dashboard.js') }}"></script>
         @stack('script')
         <script>
@@ -119,6 +124,35 @@
             $(document).ready(function () {
                 $('#dataTables').DataTable();
             });
+
+            const btnLogOut = document.querySelector('#logout');
+            btnLogOut.addEventListener('click', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                title: 'Logout ?',
+                text: 'Session login anda akan dihapus dari sistem kami.',
+                imageUrl: '{{ asset("/img/meme.jpg") }}',
+                icon: 'info',
+                imageWidth: 300,
+                imageHeight: 150,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+                }).then((logout) => {
+                    if(logout.isConfirmed) {
+                        Swal.fire({
+                            title: 'Berhasil Logout',
+                            text: 'Selamat anda berhasil logout.',
+                            icon: 'success',
+                        });
+                        setInterval(() => {
+                            location.href = "{{ route('login.logout') }}"
+                        }, 1300);
+                    };
+                })
+            })
         </script>
     </body>
 </html>

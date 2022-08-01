@@ -48,6 +48,19 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label for="description" class="col-sm-3 col-form-label">Deskripsi Kosan</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" id="description" name="description" style="height: 100px" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="map" class="col-sm-3 col-form-label">Google Maps</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" id="map" name="map" style="height: 100px" required></textarea>
+                                        <div id="infoFieldPrice" class="form-text">Saat ini anda hanya bisa meng-embed google maps</div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label for="image" class="col-sm-3 col-form-label">Pilih Gambar</label>
                                     <div class="col-sm-9">
                                         <input type="file" class="form-control mb-3" id="image" name="image" onchange="previewImage()" required>
@@ -91,13 +104,13 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $kosan->name }}</td>
-                        <td>{{ $kosan->address }}</td>
+                        <td>{{ Str::limit($kosan->address, 40) }}</td>
                         <td>{{ $kosan->range_price }}</td>
                         <td>
                             <img src="{{ asset('storage/' . $kosan->image ) }}" width="200px" alt="">
                         </td>
                         <td>{{ $kosan->owner->name }}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{ route('kosan.edit', $kosan->id) }}" class="btn btn-warning d-inline-block">Edit</a>
                             <form action="{{ route('kosan.destroy', $kosan->id) }}" method="post" class="d-inline-block">
                                 @method('DELETE')

@@ -10,29 +10,29 @@
                     <div class="col">
                         <h6>GO-KOST</h6>
                         <div class="mb-3 wrapper-nav-footer">
-                            <a href="#" class="text-decoration-none">Tentang Kami</a>
-                            <a href="#" class="text-decoration-none">Lokasi</a>
-                            <a href="#" class="text-decoration-none">Promo</a>
-                            <a href="#" class="text-decoration-none">Bantuan</a>
-                            <a href="#" class="text-decoration-none">Informasi</a>
-                            <a href="#" class="text-decoration-none">Lowongan Kerja</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Tentang Kami</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Lokasi</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Promo</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Bantuan</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Informasi</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Lowongan Kerja</a>
                         </div>
                     </div>
                     <div class="col">
                         <h6>KEBIJAKAN KAMI</h6>
                         <div class="mb-3 wrapper-nav-footer">
-                            <a href="#" class="text-decoration-none">Kebijakan Privasi</a>
-                            <a href="#" class="text-decoration-none">Hukum</a>
-                            <a href="#" class="text-decoration-none">Syarat & Ketentuan</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Kebijakan Privasi</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Hukum</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Syarat & Ketentuan</a>
                         </div>
                     </div>
                     <div class="col">
                         <h6>SOSIAL MEDIA</h6>
                         <div class="mb-3 wrapper-nav-footer">
-                            <a href="#" class="text-decoration-none">Instagram</a>
-                            <a href="#" class="text-decoration-none">Youtube</a>
-                            <a href="#" class="text-decoration-none">Email</a>
-                            <a href="#" class="text-decoration-none">WhatsApp</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Instagram</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Youtube</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">Email</a>
+                            <a href="{{ route('maintenance') }}" class="text-decoration-none">WhatsApp</a>
                         </div>
                     </div>
                 </div>

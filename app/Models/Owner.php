@@ -45,4 +45,9 @@ class Owner extends Authenticatable
     {
         return $this->hasMany(Kosan::class);
     }
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

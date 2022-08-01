@@ -18,11 +18,14 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->enum('gender', ['Pria', 'Perempuan']);
             $table->date('birthday');
             $table->string('address');
             $table->string('phone');
             $table->string('username')->unique();
             $table->string('password');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

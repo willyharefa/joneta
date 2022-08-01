@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -14,7 +16,10 @@ class ClientController extends Controller
     public function index()
     {
         $title = "Dashboard Saya";
-        return view('pages.client.index', compact('title'));
+        $payments = Payment::where('user_id', Auth::user()->id)
+                    ->where('type_order', 'DP')
+                    ->get();
+        return view('pages.client.index', compact('title', 'payments'));
     }
 
     /**

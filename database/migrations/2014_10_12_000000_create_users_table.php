@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->date('birthday');
             $table->string('address');
+            $table->enum('gender', ['Pria', 'Perempuan']);
             $table->string('phone');
             $table->string('username')->unique();
             $table->string('password');

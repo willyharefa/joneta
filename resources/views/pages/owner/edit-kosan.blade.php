@@ -44,6 +44,22 @@
                 </div>
 
                 <div class="row mb-3">
+                    <label for="description" class="col-sm-3 col-form-label">Deskripsi Kosan</label>
+                    <div class="col-sm-9">
+                        <textarea name="description" id="description" cols="30" class="form-control" rows="10">{{ $kosan->description }}</textarea>
+                        <div id="infoFieldPrice" class="form-text">Deskripsi ini akan tampil dilapak anda, sebisa mungkin anda ringkas.</div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="map" class="col-sm-3 col-form-label">Embed Map</label>
+                    <div class="col-sm-9">
+                        <textarea name="map" id="map" cols="30" class="form-control" rows="10">{{ $kosan->map }}</textarea>
+                        <div class="form-text">Silahkan cari embed maps di google map maupun di website lainnya.</div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
                     <label for="image" class="col-sm-3 col-form-label">Pilih Gambar</label>
                     <div class="col-sm-9">
                         @if ($kosan->image)

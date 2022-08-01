@@ -14,4 +14,9 @@ class Kamar extends Model
     {
         return $this->hasMany(GambarKamar::class);
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }

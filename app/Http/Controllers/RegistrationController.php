@@ -70,6 +70,7 @@ class RegistrationController extends Controller
             User::create([
                 'name' => $request->name,
                 'birthday' => $request->birthday,
+                'gender' => $request->gender,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'username' => $request->username,
@@ -83,6 +84,7 @@ class RegistrationController extends Controller
             Owner::create([
                 'name' => $request->name,
                 'birthday' => $request->birthday,
+                'gender' => $request->gender,
                 'address' => $request->address,
                 'phone' => $request->phone,
                 'username' => $request->username,

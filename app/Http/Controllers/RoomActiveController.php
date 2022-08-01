@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GambarKamar;
-use App\Models\Kamar;
-use App\Models\Kosan;
+use App\Models\RoomActive;
 use Illuminate\Http\Request;
 
-class HomepageController extends Controller
+class RoomActiveController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,10 +41,10 @@ class HomepageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\RoomActive  $roomActive
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(RoomActive $roomActive)
     {
         //
     }
@@ -54,10 +52,10 @@ class HomepageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\RoomActive  $roomActive
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(RoomActive $roomActive)
     {
         //
     }
@@ -66,10 +64,10 @@ class HomepageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\RoomActive  $roomActive
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, RoomActive $roomActive)
     {
         //
     }
@@ -77,31 +75,11 @@ class HomepageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\RoomActive  $roomActive
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(RoomActive $roomActive)
     {
         //
-    }
-    public function detailKos($id)
-    {
-        $title = "Detail Kos";
-        $kosan = Kosan::find($id);
-        $kamars = Kamar::where('kosan_id', $id)->get();
-        return view('pages.detail-kos', compact('title', 'kosan', 'kamars'));
-    }
-    public function detailKamar($id)
-    {
-        $title = "Detail Kamar";
-        $kamar = Kamar::find($id);
-        $gambarkos = GambarKamar::where('kamar_id', $id)->get();
-        return view('pages.kamar-kos', compact('title', 'kamar', 'gambarkos'));
-    }
-
-    public function maintenance()
-    {
-        $title = "Not Found";
-        return view('404', compact('title'));
     }
 }

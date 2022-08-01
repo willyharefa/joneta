@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Beranda</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('home') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('daftarKos') }}">Daftar Kost</a>
@@ -20,13 +20,21 @@
                             Registrasi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Pengunjung</a></li>
-                            <li><a class="dropdown-item" href="#">Owner</a></li>
+                            <li><a class="dropdown-item" href="{{ route('maintenance') }}">Pengunjung</a></li>
+                            <li><a class="dropdown-item" href="{{ route('maintenance') }}">Owner</a></li>
                         </ul>
                     </li>
                 </ul>
                 <div class="d-flex">
+                    @if (Auth::guard('owner')->check())
+                        <a href="{{ route('owner.index') }}" class="btn btn-primary">Dashboard Saya</a>
+                    @endif
+                    @if (Auth::guard('web')->check())
+                        <a href="{{ route('client.index') }}" class="btn btn-primary">Dashboard Saya</a>
+                    @endif
+                    @if (Auth::guest())
                     <a href="{{ route('login.index') }}" class="btn btn-primary">Login</a>
+                    @endif
                 </div>
             </div>
         </div>

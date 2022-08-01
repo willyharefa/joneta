@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kosans', function (Blueprint $table) {
+        Schema::create('room_actives', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('range_price');
-            $table->string('image');
-            $table->text('description');
-            $table->text('map');
             $table->integer('owner_id');
+            $table->integer('kosan_id');
+            $table->integer('kamar_id');
+            $table->integer('user_id');
+            $table->enum('status', ['Active']);
+            $table->date('date_in');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kosans');
+        Schema::dropIfExists('room_actives');
     }
 };

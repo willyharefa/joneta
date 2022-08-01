@@ -30,6 +30,16 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="gender" class="col-sm-4 col-form-label">Jenis Kelamin</label>
+                        <div class="col-sm-8">
+                            <select name="gender" id="gender" class="form-select" required>
+                                <option selected disabled>Pilih jenis kelamin</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="address" class="col-sm-4 col-form-label">Alamat</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" autocomplete="off" spellcheck="false" required value="{{ old('address') }}">

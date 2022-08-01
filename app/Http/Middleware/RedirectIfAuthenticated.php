@@ -26,6 +26,9 @@ class RedirectIfAuthenticated
                 if($guard === 'owner') {
                     return redirect()->route('owner.index');
                 }
+                if($guard === 'web') {
+                    return redirect()->route('client.index');
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }

@@ -19,7 +19,7 @@ class KosanController extends Controller
     public function index()
     {
         $title = "Daftar Kosan";
-        $kosans = Kosan::all();
+        $kosans = Kosan::where('owner_id', Auth::user()->id)->get();
         return view('pages.owner.kosan', compact('title', 'kosans'));
     }
 
@@ -57,6 +57,8 @@ class KosanController extends Controller
             'address' => $request->address,
             'range_price' => $request->range_prices,
             'image' => $request->file('image')->store('image'),
+            'description' => $request->description,
+            'map' => $request->map,
             // 'image' => $request->file('image')->store('image', $request->image->getClientOriginalName()),
             'owner_id' => Auth::user()->id,
         ]);

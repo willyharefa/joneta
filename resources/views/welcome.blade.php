@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-12 col-md-6 heading-hero d-sm-inline-block">
                     <h1 class="mb-4">Go-Kost Tempat Terbaik Menemukan Kost Anda</h1>
-                    <p class="opacity-75">Hai Gokers, selamat databg di website kami. Layanan yang memberikan informasi seputar kost di Pekanbaru. Registrasi akun baru untuk menggunakan layanan kami.</p>
+                    <p class="opacity-75">Hai Gokers, selamat datang di website kami. Layanan yang memberikan informasi seputar kost di Pekanbaru. Registrasi akun baru untuk menggunakan layanan kami.</p>
                 </div>
             </div>
         </div>
