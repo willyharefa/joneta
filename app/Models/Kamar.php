@@ -19,4 +19,9 @@ class Kamar extends Model
     {
         return $this->hasOne(Payment::class);
     }
+
+    public function roomActive()
+    {
+        return $this->hasMany(RoomActive::class);
+    }
 }

@@ -138,6 +138,7 @@ class OwnerController extends Controller
         $title = "Laporan Pembayaran Kosan";
         $payments = Payment::where('owner_id', Auth::user()->id)
                     ->where('type_order', 'Lunas')
+                    ->where('status', 'Confirmed')
                     ->get();
         return view('pages.owner.report.payment', compact('title', 'payments'));
     }

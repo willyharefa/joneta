@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kamar;
 use App\Models\Payment;
+use App\Models\RoomActive;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,5 +88,22 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function monthly()
+    {
+        $title = "Pembayaran Kosan";
+        $rooms = RoomActive::where('user_id', Auth::user()->id)->get();
+        $payments = Payment::where('user_id', Auth::user()->id)
+                            ->where('type_order', 'Lunas')
+                            ->orderBy('status', 'DESC')
+                            ->get();
+        return view('pages.client.monthly', compact('title', 'rooms', 'payments'));
+    }
+
+    public function responseRoomActive($id)
+    {
+        $priceRoom = Kamar::where('id',$id)->first();
+        return response()->json($priceRoom);
     }
 }

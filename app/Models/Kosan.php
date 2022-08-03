@@ -15,4 +15,9 @@ class Kosan extends Model
     {
         return $this->belongsTo(Owner::class);
     }
+
+    public function roomActive()
+    {
+        return $this->hasMany(RoomActive::class);
+    }
 }

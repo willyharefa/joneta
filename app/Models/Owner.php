@@ -17,6 +17,7 @@ class Owner extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guard = 'owner';
     protected $guarded = [
         'id',
     ];
@@ -49,5 +50,10 @@ class Owner extends Authenticatable
     public function payment()
     {
         return $this->hasMany(Payment::class);
+    }
+
+    public function roomActive()
+    {
+        return $this->hasMany(RoomActive::class);
     }
 }

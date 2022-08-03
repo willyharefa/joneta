@@ -108,8 +108,12 @@ return [
         ],
         
         'owners' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Owner::class,
+            // 'driver' => 'eloquent',
+            // 'model' => App\Models\Owner::class,
+            'provider' => 'owners',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

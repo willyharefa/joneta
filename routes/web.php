@@ -50,6 +50,9 @@ Route::group(['middleware' => 'auth:owner'], function () {
 });
 
 Route::group(['middleware' => 'auth:web'], function () {
+    Route::post('/bayar-bulanan', [ClientController::class, 'payMonthly'])->name('pay_monthly');
+    Route::get('/kamar-data/{id}', [ClientController::class, 'responseRoomActive'])->name('response_rooms');
+    Route::get('/pembayaran', [ClientController::class, 'monthly'])->name('monthly');
     Route::resource('client', ClientController::class);
 });
 

@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="wrapper-button">
-                        <a href="{{ route('detail_kos', $kosan->id) }}" class="btn btn-primary d-flex py-3 justify-content-center">Lihat Selengkapnya</a>
+                        <a href="{{ route('detail_kos', $kosan->id) }}" class="btn btn-primary d-flex py-3 justify-content-center" style="bottom: 0;">Lihat Selengkapnya</a>
                     </div>
                 </div>
                 @endforeach

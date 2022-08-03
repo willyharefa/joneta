@@ -136,6 +136,7 @@
         btnRejected.forEach(btnRejected => {
             btnRejected.addEventListener('click', (e) => {
                 e.preventDefault();
+                form = btnRejected.parentElement;
                 Swal.fire({
                     title: 'Tolak Pembayaran?',
                     text: "Pembayaran akan ditolak, pastikan kembali pembayaran valid.",
@@ -147,11 +148,16 @@
                     cancelmButtonText: 'Batal',
                     }).then((willRejected) => {
                     if (willRejected.isConfirmed) {
-                        Swal.fire(
-                        'Pembayaran ditolak!',
-                        'Berhasil, pembayaran client ditolak.',
-                        'success'
-                        )
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Pembayaran Ditolak',
+                            text: 'Pembayaran berhasil ditolak.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setInterval(() => {
+                            form.submit();
+                        }, 1500);
                     }
                 })
             });

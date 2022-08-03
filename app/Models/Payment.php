@@ -10,6 +10,9 @@ class Payment extends Model
     use HasFactory;
 
     protected $guarded = [ 'id' ];
+    protected $casts = [
+        'date_pay' => 'date',
+    ];
 
     public function owner()
     {

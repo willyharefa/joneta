@@ -32,8 +32,8 @@
                     @if (Auth::guard('web')->check())
                         <a href="{{ route('client.index') }}" class="btn btn-primary">Dashboard Saya</a>
                     @endif
-                    @if (Auth::guest())
-                    <a href="{{ route('login.index') }}" class="btn btn-primary">Login</a>
+                    @if (Auth::guard('owner')->guest() AND Auth::guard('web')->guest())
+                        <a href="{{ route('login.index') }}" class="btn btn-primary">Login</a>
                     @endif
                 </div>
             </div>

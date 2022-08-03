@@ -82,9 +82,13 @@
                             @endauth
                             @auth('web')
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('client.index') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard Utama
+                            </a>
+                            <a class="nav-link" href="{{ route('monthly') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Pembayaran
                             </a>
                             @endauth
                         </div>
