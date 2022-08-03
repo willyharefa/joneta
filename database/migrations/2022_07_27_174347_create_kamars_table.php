@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
-            $table->integer('owner_id');
-            $table->integer('kosan_id');
+            $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('kosan_id');
             $table->string('name');
             $table->integer('total_room');
             $table->integer('room_filled');
             $table->integer('room_available');
             $table->integer('price');
             $table->text('description');
+
+            $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade');
+            $table->foreign('kosan_id')->references('id')->on('kosans')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -128,7 +128,11 @@
                         </td>
                         <td>
                             <a href="{{ route('kamar.edit', $kamar->id) }}" class="btn btn-warning" type="button">Edit</a>
-                            <button type="button" class="btn btn-danger">Hapus</button>
+                            <form action="{{ route('kamar.destroy', $kamar->id) }}" method="post" class="d-inline-block">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger" id="btn-hapus-kamar">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                     @empty 
@@ -147,6 +151,35 @@
 @endsection
 
 @push('script')
+    <script>
+        const btnHapus = document.querySelectorAll('#btn-hapus-kamar');
+        btnHapus.forEach(btnHapus => {
+            btnHapus.addEventListener('click', (e) => {
+                e.preventDefault();
+                const form = btnHapus.parentElement;
+                Swal.fire({
+                    title: 'Yakin Menghapus ?',
+                    text: 'Data kamar akan dihapus dari database.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Batal',
+                    reverseButtons: true
+                    }).then((willDeleted) => {
+                        if(willDeleted.isConfirmed) {
+                            Swal.fire({
+                                title: 'Berhasil Dihapus',
+                                text: 'Data kamar anda berhasil dihapus.',
+                                icon: 'success',
+                            });
+                            setInterval(() => {
+                                form.submit();
+                            }, 1300);
+                        }
+                    });
+                });
+        });
+    </script>
     {{-- <script>
         const btnDelete = document.querySelectorAll('#btn-delete');
         btnDelete.forEach((btnDelete) => {

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('owner_id');
-            $table->integer('kosan_id');
-            $table->integer('kamar_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('owner_id');
+            $table->unsignedBigInteger('kosan_id');
+            $table->unsignedBigInteger('kamar_id');
+            $table->unsignedBigInteger('user_id');
             $table->date('date_pay');
             $table->integer('price_room');
             $table->integer('pay_amount');
@@ -28,6 +28,10 @@ return new class extends Migration
             $table->string('image');
             $table->enum('status', ['Confirmed', 'On Reviewed', 'Rejected']);
             $table->timestamps();
+
+            $table->foreign('owner_id')->references('id')->on('owners')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('kosan_id')->references('id')->on('kosans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('kamar_id')->references('id')->on('kamars')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

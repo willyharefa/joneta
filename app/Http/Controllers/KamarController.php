@@ -113,6 +113,7 @@ class KamarController extends Controller
      */
     public function destroy(Kamar $kamar)
     {
-        //
+        Kamar::find($kamar->id)->delete();
+        return redirect()->back()->with("success", "Data berhasil dihapus.");
     }
 }

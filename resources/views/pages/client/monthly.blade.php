@@ -27,6 +27,7 @@
         </div>
         @endif
 
+        @if (!$rooms->isEmpty())
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPayment">
             Tambah Pembayaran
@@ -108,7 +109,8 @@
                 </div>
             </div>
         </form>
-        
+        @endif
+
         <div class="col shadow-lg rounded-3 mt-5">
             <div class="table-responsive p-4">
                 <table id="dataTables" class="table table-sm align-items-center align-middle w-100 text-nowrap">
@@ -276,7 +278,6 @@
         const   newChange = document.querySelectorAll('#new_change');
         const   btnSavePaymentUpdate = document.querySelectorAll('#btn-change-payment');
                 btnUpdatePay.forEach((btnUpdatePay, indexBtnUpdate) => {
-                    // return indexBtnUpdate;
                     btnUpdatePay.addEventListener('click', () => {
                         newPayAmount[indexBtnUpdate].addEventListener('input', (e) => {
                             if(!parseInt(e.target.value) == "") {
@@ -319,15 +320,6 @@
                                 }
                             });
                         })
-                    // function newPreviewImage() {
-                    //     const newImage = document.querySelectorAll('#new_image');
-                    //     const newImgPreview = document.querySelectorAll('.new-img-preview');
-                    //     const oFReader = new FileReader();
-                    //     oFReader.readAsDataURL(newImage[indexBtnUpdate].files[0]);
-                    //     oFReader.onload = function (oFREvent) {
-                    //         newImgPreview[indexBtnUpdate].src = oFREvent.target.result;
-                    //     }
-                    // }
                 });
     </script>
 @endpush

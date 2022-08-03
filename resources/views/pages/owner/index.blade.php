@@ -50,6 +50,7 @@
                     </thead>
                     <tbody>
                         @forelse ($payments as $payment)
+                        @if (!$payment->kamar == null)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $payment->user->name }}</td>
@@ -81,6 +82,7 @@
                             <td>{{ $payment->status }}</td>
                             @endif
                         </tr>
+                        @endif
                         @empty
                         <tr>
                             <td colspan="9">

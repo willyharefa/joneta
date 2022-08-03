@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('gambar_kamars', function (Blueprint $table) {
             $table->id();
-            $table->integer('kamar_id');
+            $table->unsignedBigInteger('kamar_id');
             $table->string('image');
             $table->timestamps();
+
+            $table->foreign('kamar_id')->references('id')->on('kamars')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
